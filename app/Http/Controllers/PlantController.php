@@ -14,12 +14,10 @@ class PlantController extends Controller
         return view("plants.index", compact("plants"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view("plants.create");
     }
 
     /**
