@@ -8,7 +8,7 @@
 <body>
     <h1>Cadastro de Plantas</h1>
 
-    <form action="" method="post">
+    <form action="{{route('plants.store')}}" method="post">
         @csrf
         <label for="culture">cultura</label>
         <input type="text" name="culture">

@@ -20,12 +20,12 @@ class PlantController extends Controller
         return view("plants.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        Plant::create($request->all());
+
+        return redirect()->route("plants.index");
     }
 
     /**
