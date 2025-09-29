@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Plantas</h1>
+    <a href="{{route('plants.create')}}">Criar novo Cadastro</a>
 
     <ul>
         @foreach($plants as $plant)
