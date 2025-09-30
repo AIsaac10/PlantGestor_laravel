@@ -11,7 +11,7 @@
 
     <ul>
         @foreach($plants as $plant)
-            <li>{{ $plant->culture }}</li>
+            <li>{{ $plant->culture }} | <a href="{{ route('plants.edit', $plant->id) }}">Editar</a></a></li>
         @endforeach
     </ul>
 </body>
