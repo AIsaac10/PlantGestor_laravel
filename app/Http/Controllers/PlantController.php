@@ -38,15 +38,18 @@ class PlantController extends Controller
     public function edit(string $id)
     {
         $plant = Plant::findOrFail($id);
+        
         return view("plants.edit", compact("plant"));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $plant = Plant::findOrFail($id);
+
+        $plant->update($request->all());    
+        
+        return redirect()->route("plants.index");        
     }
 
     /**
