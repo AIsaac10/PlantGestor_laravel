@@ -38,7 +38,7 @@ class PlantController extends Controller
     public function edit(string $id)
     {
         $plant = Plant::findOrFail($id);
-        
+
         return view("plants.edit", compact("plant"));
     }
 
@@ -52,11 +52,13 @@ class PlantController extends Controller
         return redirect()->route("plants.index");        
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        $plant = Plant::findOrFail($id);
+
+        $plant->delete();
+        
+        return redirect()->route("plants.index"); 
     }
 }
