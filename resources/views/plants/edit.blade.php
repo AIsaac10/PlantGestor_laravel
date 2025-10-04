@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+        <link rel="stylesheet" href="{{ asset('css/form.css') }}">
 </head>
 <body>
     <form action="{{ route('plants.update', $plant->id ) }}" method="post">
@@ -11,7 +12,7 @@
         @csrf
         
         <label for="culture">Editar Cultura</label>
-        <input type="text" name="culture" value="{{ $plant->culture }}">
+        <input type="text" name="culture" value="{{ $plant->culture }}" required>
 
         <input type="submit">
 

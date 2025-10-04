@@ -1,0 +1,80 @@
+/* Reset básico */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    color: #333;
+}
+
+/* Título */
+h1 {
+    color: rgb(31, 166, 90);
+    margin-bottom: 30px;
+}
+
+/* Formulário */
+form {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Labels */
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Inputs */
+input[type="text"], 
+input[type="email"], 
+input[type="password"] {
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: rgb(31, 166, 90);
+    box-shadow: 0 0 5px rgba(31, 166, 90, 0.5);
+    outline: none;
+}
+
+/* Botão de envio */
+input[type="submit"] {
+    padding: 12px 20px;
+    background-color: rgb(44, 62, 80);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #3b5164;
+}
+
+/* Responsividade */
+@media (max-width: 500px) {
+    form {
+        padding: 20px;
+        width: 90%;
+    }
+}

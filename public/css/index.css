@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+    color: #333;
+}
+
+
+header {
+    background-color: rgb(31, 166, 90);
+    padding: 15px 0;
+    
+}
+
+header h1 {
+    margin-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color: white;
+    font-size: 2rem;
+}
+
+
+#linkCreate {
+    margin: 20px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(44, 62, 80);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#linkCreate:hover {
+    background-color: #3b5164;
+}
+
+
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+
+table {
+    width: 90%;
+    max-width: 1000px;
+    border-collapse: collapse;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: #1FA65A;
+    color: white;
+}
+
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #EDF0F1; 
+}
+
+tr:hover {
+    background-color: #d1e7d6; 
+}
+
+
+.btnEdit, .btnDelete {
+    margin: 5px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+}
+
+
+.btnEdit {
+    background-color: rgb(44, 62, 80);
+    text-decoration: none;
+}
+
+.btnEdit:hover {
+    background-color: #3b5164;
+}
+
+
+.btnDelete {
+    background-color: #E74C3C;
+}
+
+.btnDelete:hover {
+    background-color: #c0392b;
+}
+
+
