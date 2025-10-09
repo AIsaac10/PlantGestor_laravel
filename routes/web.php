@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlantController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get("/",[PlantController::class, "index"]);
 
 Route::get("/plants",[PlantController::class, "index"])->name("plants.index");
 Route::get("/plants/create",[PlantController::class, "create"])->name("plants.create");
