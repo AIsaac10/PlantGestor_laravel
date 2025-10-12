@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('harvests', function (Blueprint $table) {
             $table->id();
-            $table->cultureId;
-            $table->culture;
-            $table->timeHarvest;
-            $tabke->weightHarvest;
+            $table->unsignedBigInteger('culture_id');
+            $table->string('culture');
+            $table->string('time_harvest');
+            $tabke->decimal('weight_harvest');
             $table->timestamps();
         });
     }
