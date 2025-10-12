@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('culture_id');
             $table->string('culture');
             $table->string('time_harvest');
-            $tabke->decimal('weight_harvest');
+            $table->decimal('weight_harvest');
             $table->timestamps();
         });
     }
