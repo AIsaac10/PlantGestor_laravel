@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Harvest;
 
 class HarvestController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $harvests = Harvest::all();
+        return view("harvests.index", compact("harvests"));
     }
 
     /**
