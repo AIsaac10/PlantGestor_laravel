@@ -9,6 +9,7 @@ body {
 header {
     background-color: rgb(31, 166, 90);
     padding: 15px 0;
+    display: flex;
     
 }
 

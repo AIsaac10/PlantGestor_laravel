@@ -9,9 +9,11 @@
 <body>
     <header>
         <h1>PlantGestor</h1>
+                <a id="linkCreate" href="{{ route('harvests.index') }}">Colheitas</a>
     </header>
     
         <a id="linkCreate" href="{{ route('plants.create') }}">Criar novo Cadastro</a>
+
 
 
 
