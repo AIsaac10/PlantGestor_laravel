@@ -11,7 +11,7 @@
         @method("put")
         @csrf
         
-        <label for="culture">Editar Cultura</label>
+        <label for="culture">Editar Cultura:</label>
         <input type="text" name="culture" value="{{ $plant->culture }}" required>
 
         <input type="submit">

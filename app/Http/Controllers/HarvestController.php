@@ -16,8 +16,8 @@ class HarvestController extends Controller
 
 
     public function create()
-    {
-        return view("plants.create");
+    {   
+        return view("harvests.create");
     }
 
 
@@ -25,7 +25,7 @@ class HarvestController extends Controller
     {
         Harvest::create($request->all());
 
-        return redirect()->route("harvest.index");
+        return redirect()->route("harvests.index");
     }
 
     /**

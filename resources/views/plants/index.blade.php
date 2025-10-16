@@ -30,6 +30,9 @@
                     <tr>
                         <td>{{ $plant->culture }}</td>
                         <td>
+                            <a class="btnEdit" href="{{ route('harvests.create', $plant->id) }}">Criar Colheita</a>
+                        </td>
+                        <td>
                             <a class="btnEdit" href="{{ route('plants.edit', $plant->id) }}">Editar</a> 
                             
                             
@@ -38,7 +41,7 @@
                                 @method("DELETE")
                                 <input class="btnDelete" type="submit" value="Excluir">
                             
-                            </div>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

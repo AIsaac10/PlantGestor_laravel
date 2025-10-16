@@ -11,7 +11,7 @@
 
     <form action="{{route('plants.store')}}" method="post">
         @csrf
-        <label for="culture">cultura</label>
+        <label for="culture">Cultura:</label>
         <input type="text" name="culture" required>
         <input type="submit" value="Enviar">
     </form>
