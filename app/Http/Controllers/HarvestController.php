@@ -14,20 +14,18 @@ class HarvestController extends Controller
         return view("harvests.index", compact("harvests"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view("plants.create");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        Harvest::create($request->all());
+
+        return redirect()->route("harvest.index");
     }
 
     /**
