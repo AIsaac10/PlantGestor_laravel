@@ -16,16 +16,24 @@ class HarvestController extends Controller
 
 
     public function create()
-    {   
-        return view("harvests.create");
+    {
+        $plants = \App\Models\Plant::all();
+        return view('harvests.create', compact('plants'));
     }
 
 
     public function store(Request $request)
     {
-        Harvest::create($request->all());
+        $request->validate([
+            'culture' => 'required|string|exists:plants,culture',
+            'time_harvest' => 'required|string',
+            'weight_harvest' => 'required|numeric',
+        ]);
 
-        return redirect()->route("harvests.index");
+
+        \App\Models\Harvest::create($request->all());
+
+        return redirect()->route('harvests.index');
     }
 
     /**
