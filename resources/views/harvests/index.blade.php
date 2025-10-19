@@ -9,9 +9,10 @@
 <body>
     <header>
         <h1>Colheita</h1>
+        <a id="linkCreate" href="{{ route('plants.index') }}">Plantas</a>
     </header>
     
-        <a id="linkCreate" href="{{ route('harvests.create') }}">Criar novo Cadastro</a>
+    <a class="btnEdit" href="{{ route('harvests.create') }}">Criar Colheita</a>
 
 
 
@@ -26,8 +27,14 @@
             <tbody>
                 @foreach($harvests as $harvest)
                     <tr>
-                        <td>{{ $harvest->culture }}
-                            
+                        <td>
+                            {{ $harvest->culture }} 
+                        </td>
+                        <td>
+                            {{ $harvest->time_harvest }} 
+                        </td>
+                        <td>
+                            {{ $harvest->weight_harvest }} 
                         </td>
                         <td>
                             <a class="btnEdit" href="{{ route('harvests.edit', $harvest->id) }}">Editar</a> 
