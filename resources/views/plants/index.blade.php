@@ -16,7 +16,6 @@
 
 
 
-
     <div id="container">
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
@@ -29,9 +28,7 @@
                 @foreach($plants as $plant)
                     <tr>
                         <td>{{ $plant->culture }}</td>
-                        <td>
-                            <a class="btnEdit" href="{{ route('harvests.create', $plant->id) }}">Criar Colheita</a>
-                        </td>
+
                         <td>
                             <a class="btnEdit" href="{{ route('plants.edit', $plant->id) }}">Editar</a> 
                             
