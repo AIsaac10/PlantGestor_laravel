@@ -10,6 +10,6 @@ class Harvest extends Model
 
     public function plant()
     {
-        return $this->belongsTo(Plant::class, 'culture_id');
+        return $this->belongsTo(Plant::class, 'culture', 'culture');
     }
 }
