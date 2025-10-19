@@ -16,8 +16,10 @@ return new class extends Migration
             $table->unsignedBigInteger('culture_id');
             $table->string('culture');
             $table->string('time_harvest');
-            $table->decimal('weight_harvest');
+            $table->decimal('weight_harvest', 8, 2);
             $table->timestamps();
+
+            $table->foreign('culture_id')->references('id')->on('plants')->onDelete('cascade');
         });
     }
 
