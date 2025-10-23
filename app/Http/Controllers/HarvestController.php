@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Plant;
 use App\Models\Harvest;
+use Illuminate\Http\Request;
 
 class HarvestController extends Controller
 {
@@ -36,28 +37,28 @@ class HarvestController extends Controller
         return redirect()->route('harvests.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
-        //
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
+        $harvest = Harvest::findOrFail($id);
+        $plants = Plant::all();
+        return view("harvests.edit", compact("harvest"),  compact('plants'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $harvest = Harvest::findOrFail($id);
+
+        $harvest->update($request->all());
+
+        return redirect()->route("harvests.index");
     }
 
     /**
