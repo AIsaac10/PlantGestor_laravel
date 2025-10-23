@@ -14,9 +14,12 @@
             @method("put")
 
             <label for="culture">Planta:</label>
-            <select name="culture" id="culture" required onchange="updateCulture()">
+            <select name="culture" id="culture" required>
                 @foreach($plants as $plant)
-                    <option value="{{ $plant->culture }}">{{ $plant->culture }}</option>
+                    <option value="{{ $plant->culture }}" 
+                        {{ $harvest->culture == $plant->culture ? 'selected' : '' }}>
+                        {{ $plant->culture }}
+                    </option>
                 @endforeach
             </select>
 
