@@ -61,11 +61,13 @@ class HarvestController extends Controller
         return redirect()->route("harvests.index");
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        $harvest = Harvest::findOrFail($id);
+
+        $harvest->delete();
+        
+        return redirect()->route("harvests.index"); 
     }
 }
