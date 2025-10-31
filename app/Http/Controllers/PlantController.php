@@ -25,7 +25,7 @@ class PlantController extends Controller
     {
         Plant::create($request->all());
 
-        return redirect()->route("plants.index");
+        return redirect()->route("plants.index")->with('success', 'Planta cadastrada com sucesso!');
     }
 
 
@@ -49,7 +49,7 @@ class PlantController extends Controller
 
         $plant->update($request->all());    
         
-        return redirect()->route("plants.index");        
+        return redirect()->route("plants.index")->with('success', 'Planta alterada com sucesso!');        
     }
 
 
@@ -59,6 +59,6 @@ class PlantController extends Controller
 
         $plant->delete();
         
-        return redirect()->route("plants.index"); 
+        return redirect()->route("plants.index")->with('success', 'Planta excluída com sucesso!'); 
     }
 }

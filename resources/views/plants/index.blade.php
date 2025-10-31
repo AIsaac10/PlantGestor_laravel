@@ -15,6 +15,26 @@
         <a id="linkCreate" href="{{ route('plants.create') }}">Criar novo Cadastro</a>
 
 
+    @if (session('success'))
+    <div id="alert-message">
+        {{ session('success') }}
+    </div>
+
+    <script>
+
+        setTimeout(() => {
+            const alert = document.getElementById('alert-message');
+            if (alert) {
+                alert.style.opacity = '0';
+                setTimeout(() => alert.remove(), 500);
+            }
+        }, 3000);
+    </script>
+    @endif
+
+    @if (session('success'))
+
+    @endif
 
     <div id="container">
         <table border="1" cellpadding="5" cellspacing="0">
