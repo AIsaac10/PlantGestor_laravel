@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plantas</title>
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/index.css') }}"> -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <header>
+<body class="">
+    <header class="bg-green-500">
         <h1>PlantGestor</h1>
         <a id="linkCreate" href="{{ route('harvests.index') }}">Colheitas</a>
     </header>
@@ -34,9 +35,9 @@
 
 
 
-    <div id="container">
-        <table border="1" cellpadding="5" cellspacing="0">
-            <thead>
+    <div class="overflow-x-auto " >
+        <table class="min-w-200 border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+            <thead class="bg-green-600 text-white">
                 <tr>
                     <th>Nome da Cultura</th>
                     <th>Ações</th>
