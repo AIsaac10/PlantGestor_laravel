@@ -9,10 +9,10 @@
 <body>
     <header>
         <h1>PlantGestor</h1>
-                <a id="linkCreate" href="{{ route('harvests.index') }}">Colheitas</a>
+        <a id="linkCreate" href="{{ route('harvests.index') }}">Colheitas</a>
     </header>
     
-        <a id="linkCreate" href="{{ route('plants.create') }}">Criar novo Cadastro</a>
+    <a id="linkCreate" href="{{ route('plants.create') }}">Criar novo Cadastro</a>
 
 
     @if (session('success'))
@@ -32,9 +32,7 @@
     </script>
     @endif
 
-    @if (session('success'))
 
-    @endif
 
     <div id="container">
         <table border="1" cellpadding="5" cellspacing="0">
