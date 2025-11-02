@@ -34,7 +34,7 @@ class HarvestController extends Controller
 
         \App\Models\Harvest::create($request->all());
 
-        return redirect()->route('harvests.index');
+        return redirect()->route('harvests.index')->with('success', 'Colheita cadastrada com sucesso!');
     }
 
 
@@ -58,7 +58,7 @@ class HarvestController extends Controller
 
         $harvest->update($request->all());
 
-        return redirect()->route("harvests.index");
+        return redirect()->route("harvests.index")->with('success', 'Colheita alterada com sucesso!');
     }
 
 
@@ -68,6 +68,6 @@ class HarvestController extends Controller
 
         $harvest->delete();
         
-        return redirect()->route("harvests.index"); 
+        return redirect()->route("harvests.index")->with('success', 'Colheita excluída com sucesso!'); 
     }
 }
