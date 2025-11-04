@@ -1,24 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-        <link rel="stylesheet" href="{{ asset('css/form.css') }}">
+    <title>Editar Cultura</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <form action="{{ route('plants.update', $plant->id ) }}" method="post">
-        @method("put")
-        @csrf
-        
-        <label for="culture">Editar Cultura:</label>
-        <input type="text" name="culture" value="{{ $plant->culture }}" required>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
 
-        <input type="submit">
+    <div class="bg-white p-6 rounded-xl shadow-lg w-full max-w-sm">
+        <h1 class="text-xl font-semibold text-gray-800 mb-4 text-center">
+            Editar Cultura
+        </h1>
 
+        <form action="{{ route('plants.update', $plant->id) }}" method="POST" class="space-y-4">
+            @method("PUT")
+            @csrf
 
+            <div>
+                <label for="culture" class="block text-gray-700 font-medium mb-1">
+                    Nome da Cultura:
+                </label>
+                <input type="text" id="culture" name="culture" value="{{ $plant->culture }}" required
+                    class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+            </div>
 
-
-    </form>
+            <button type="submit"
+                class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
+                Enviar
+            </button>
+        </form>
+    </div>
+    <a class="inline-block  hover:text-gray-500 text-bg-gray-800 text-sm px-3 py-1 rounded transition" href="{{ route('plants.index') }}">Retornar</a>
 </body>
 </html>
