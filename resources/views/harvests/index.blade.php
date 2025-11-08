@@ -1,65 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colheita</title>
-    <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <title>Colheitas</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
-    <header>
-        <h1>Colheita</h1>
-        <a id="linkCreate" href="{{ route('plants.index') }}">Plantas</a>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+
+    <header class="bg-green-500 flex p-3">
+        <h1 class="text-2xl pr-6 text-white">PlantGestor</h1>
+        <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('plants.index') }}">Plantas</a>
     </header>
 
-    <a class="btnEdit" href="{{ route('harvests.create') }}">Criar Colheita</a>
+    <div class="flex items-center">
+        <div class="p-5 pr-95">
+            <a class=" inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-5 py-3 rounded transition" href="{{ route('harvests.create') }}">Criar novo Cadastro</a>
+        </div>
 
         @if (session('success'))
-    <div id="alert-message">
-        {{ session('success') }}
+        <div id="alert-message" class="bg-green-100 text-green-800 border border-green-300 px-4 py-2 rounded-md shadow-sm font-medium transition-opacity duration-500">
+            {{ session('success') }}
+        </div>
+
+        <script>
+
+            setTimeout(() => {
+                const alert = document.getElementById('alert-message');
+                if (alert) {
+                    alert.style.opacity = '0';
+                    setTimeout(() => alert.remove(), 500);
+                }
+            }, 3000);
+        </script>
+        @endif
+        
     </div>
 
-    <script>
 
-        setTimeout(() => {
-            const alert = document.getElementById('alert-message');
-            if (alert) {
-                alert.style.opacity = '0';
-                setTimeout(() => alert.remove(), 500);
-            }
-        }, 3000);
-    </script>
-    @endif
-    
-    <div id="container">
-        <table border="1" cellpadding="5" cellspacing="0">
-            <thead>
-                <tr>
-                    <th>Colheita</th>
-                    <th>Tempo</th>
-                    <th>Peso</th>
-                    <th>Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($harvests as $harvest)
+        <div class="overflow-x-auto flex items-center justify-center">
+            <table class="min-w-200 border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                <thead class="bg-green-600 text-white">
                     <tr>
-                        <td>{{ $harvest->culture }}</td>
-                        <td>{{ $harvest->time_harvest }}</td>
-                        <td>{{ $harvest->weight_harvest }}</td>
-                        <td>
-                            <a class="btnEdit" href="{{ route('harvests.edit', $harvest->id) }}">Editar</a>
-
-                            <form action="{{ route('harvests.destroy', $harvest->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
-                                @csrf
-                                @method("DELETE")
-                                <input class="btnDelete" type="submit" value="Excluir">
-                            </form>
-                        </td>
+                        <th class="px-6 py-3 text-left text-sm font-semibold">Colheita</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold">Tempo</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold">Peso</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold">Ações</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                </thead>
+                <tbody>
+                    @foreach($harvests as $harvest)
+                        <tr class="odd:bg-white even:bg-gray-100">
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->culture }}</td>
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->time_harvest }}</td>
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->weight_harvest }}</td>
+                            <td class="px-6 py-3 border-t border-gray-200 space-x-2">
+                                <a href="{{ route('harvests.edit', $harvest->id) }}" 
+                                   class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition">
+                                   Editar
+                                </a>
+
+                                <form action="{{ route('harvests.destroy', $harvest->id) }}" 
+                                      method="POST" 
+                                      class="inline"
+                                      onsubmit="return confirm('Tem certeza que deseja excluir esta colheita?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" 
+                                            class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded transition">
+                                        Excluir
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </main>
 </body>
 </html>
