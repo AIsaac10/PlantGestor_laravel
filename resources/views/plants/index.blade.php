@@ -9,7 +9,9 @@
 <body class="bg-gray-50">
     <header class="bg-green-500 flex p-3">
         <h1 class="text-2xl pr-6 text-white">PlantGestor</h1>
+        <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('plants.index') }}">Plantas</a>
         <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('harvests.index') }}">Colheitas</a>
+        <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.index') }}">Fertilizantes</a>
     </header>
 
     <div class="flex items-center">
