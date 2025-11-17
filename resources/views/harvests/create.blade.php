@@ -24,11 +24,11 @@
                 @endforeach
             </select>
 
-            <label class="block text-gray-700 font-medium mb-1">Horário da Colheita:</label>
-            <input type="text" name="time_harvest" required
+            <label class="block text-gray-700 font-medium mb-1">data da Colheita:</label>
+            <input type="date" name="time_harvest" required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 
-            <label class="block text-gray-700 font-medium mb-1">Peso da Colheita:</label>
+            <label class="block text-gray-700 font-medium mb-1">Peso da Colhita:</label>
             <input type="number" step="0.01" name="weight_harvest" required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 

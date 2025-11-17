@@ -54,8 +54,8 @@
                     @foreach($harvests as $harvest)
                         <tr class="odd:bg-white even:bg-gray-100">
                             <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->plant->culture }}</td>
-                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->time_harvest }}</td>
-                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->weight_harvest }}</td>
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->time_harvest_formatted }}</td>
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->weight_harvest}}</td>
                             <td class="px-6 py-3 border-t border-gray-200 space-x-2">
                                 <a href="{{ route('harvests.edit', $harvest->id) }}" 
                                    class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition">

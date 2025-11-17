@@ -27,7 +27,7 @@ class HarvestController extends Controller
     {
         $request->validate([
             'plant_id' => 'required|integer|exists:plants,id',
-            'time_harvest' => 'required|string',
+            'time_harvest' => 'required|date',
             'weight_harvest' => 'required|numeric',
         ]);
 
