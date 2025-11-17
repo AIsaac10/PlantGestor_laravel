@@ -56,7 +56,7 @@
                     <tr class="odd:bg-white even:bg-gray-100">
                         <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->plant->culture }}</td>
                         <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->fertilizer }}</td>
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->time_fertilizer }}</td>
+                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->time_fertilizer_formatted }}</td>
                         <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->weight_fertilizer }}</td>
 
                         <td class="px-6 py-3 border-t border-gray-200 space-x-2">

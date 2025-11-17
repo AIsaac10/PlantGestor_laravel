@@ -27,7 +27,7 @@ class FertilizerController extends Controller
     {
         $request->validate([
             'plant_id' => 'required|integer|exists:plants,id',
-            'time_fertilizer' => 'required|string',
+            'time_fertilizer' => 'required|date',
             'weight_fertilizer' => 'required|numeric',
         ]);
 

@@ -37,7 +37,7 @@
                 <label for="time_fertilizer" class="block text-gray-700 font-medium mb-1">
                     Data da Fertilização:
                 </label>
-                <input type="text" id="time_fertilizer" name="time_fertilizer" required
+                <input type="date" id="time_fertilizer" name="time_fertilizer" required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 
 
