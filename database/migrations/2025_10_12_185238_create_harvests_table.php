@@ -6,24 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('harvests', function (Blueprint $table) {
             $table->id();
-            $table->string('culture');
             $table->string('time_harvest');
             $table->decimal('weight_harvest', 8, 2);
             $table->timestamps();
-            $table->foreign('culture')->references('culture')->on('plants')->onDelete('cascade');
+            $table->foreignId('plant_id')->constrained('plants')->onDelete('cascade');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('harvests');

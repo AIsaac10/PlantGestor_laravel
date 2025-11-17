@@ -11,12 +11,11 @@ return new class extends Migration
     {
         Schema::create('fertilizers', function (Blueprint $table) {
             $table->id();
-            $table->string('culture');
             $table->string('fertilizer');
             $table->date('time_fertilizer');
             $table->decimal('weight_fertilizer');        
             $table->timestamps();
-            $table->foreign('culture')->references('culture')->on('plants')->onDelete('cascade');
+            $table->foreignId('plant_id')->constrained('plants')->onDelete('cascade');
         });
     }
 

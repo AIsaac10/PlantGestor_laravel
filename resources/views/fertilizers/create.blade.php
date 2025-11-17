@@ -17,18 +17,22 @@
             @csrf
 
             <div>
-                <label for="culture" class="block text-gray-700 font-medium mb-1">Planta:</label>
-                <select name="culture" id="culture" required onchange="updateCulture()">
+
+                <label for="plant_id" class="block text-gray-700 font-medium mb-1">Planta:</label>
+                <select name="plant_id" required>
                     @foreach($plants as $plant)
-                        <option value="{{ $plant->culture }}">{{ $plant->culture }}</option>
+                        <option value="{{ $plant->id }}">{{ $plant->culture }}</option>
                     @endforeach
                 </select>
+
                 
+
                 <label for="fertilizer" class="block text-gray-700 font-medium mb-1">
                     Fertilizante:
                 </label>
                 <input type="text" id="fertilizer" name="fertilizer" required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
 
                 <label for="time_fertilizer" class="block text-gray-700 font-medium mb-1">
                     Data da Fertilização:
@@ -36,19 +40,14 @@
                 <input type="text" id="time_fertilizer" name="time_fertilizer" required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 
+
                 <label for="weight_fertilizer" class="block text-gray-700 font-medium mb-1">
-                    Fertilizante:
+                    Peso do Fertilizante:
                 </label>
-                <input type="number" id="weight_fertilizer" name="weight_fertilizer" required
+                <input type="number" step="0.01" id="weight_fertilizer" name="weight_fertilizer" required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
             </div>
 
             <button type="submit"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
-                Enviar
-            </button>
-        </form>
-    </div>
-    <a class="inline-block  hover:text-gray-500 text-bg-gray-800 text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.index') }}">Retornar</a>
-</body>
-</html>
+                Envia
