@@ -11,7 +11,7 @@ class FertilizerController extends Controller
 
     public function index()
     {
-        $fertilizers = Fertilizer::all();
+        $fertilizers = \App\Models\Fertilizer::with('plant')->get();
         return view("fertilizers.index", compact("fertilizers"));
     }
 
@@ -26,47 +26,49 @@ class FertilizerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'culture' => 'required|string|exists:plants,culture',
+            'plant_id' => 'required|integer|exists:plants,id',
             'time_fertilizer' => 'required|string',
             'weight_fertilizer' => 'required|numeric',
         ]);
 
 
-        Fertilizer::create($request->only(['culture','fertilizer','time_fertilizer','weight_fertilizer'
+        Fertilizer::create($request->only(['plant_id','fertilizer','time_fertilizer','weight_fertilizer'
 ]));
 
         return redirect()->route('fertilizers.index')->with('success', 'Colheita cadastrada com sucesso!');
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
-        //
+        
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
-        //
+        $fertilizers = Fertilizer::findOrFail($id);
+        $plants = Plant::all();
+        return view("fertilizers.edit", compact("fertilizers"),  compact('plants'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        $fertilizer = Fertilizer::findOrFail($id);
+
+        $fertilizer->update($request->all());
+
+        return redirect()->route("fertilizers.index")->with('success', 'Colheita alterada com sucesso!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
-        //
+        $fertilizer = Fertilizer::findOrFail($id);
+
+        $fertilizer->delete();
+        
+        return redirect()->route("fertilizers.index")->with('success', 'Colheita excluída com sucesso!'); 
     }
 }
