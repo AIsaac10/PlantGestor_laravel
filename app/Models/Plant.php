@@ -8,8 +8,13 @@ class Plant extends Model
 {
     protected $fillable = ["culture", 'other_fields'];
 
-        public function harvests()
-    {
-        return $this->hasMany(Harvest::class, 'culture_id');
-    }
+public function harvests()
+{
+    return $this->hasMany(Harvest::class, 'plant_id');
+}
+
+public function fertilizers()
+{
+    return $this->hasMany(Fertilizer::class, 'plant_id');
+}
 }

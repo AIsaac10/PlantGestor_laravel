@@ -11,7 +11,7 @@ class HarvestController extends Controller
 
     public function index()
     {
-        $harvests = Harvest::all();
+        $harvests = \App\Models\Harvest::with('plant')->get();
         return view("harvests.index", compact("harvests"));
     }
 
@@ -26,7 +26,7 @@ class HarvestController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'culture' => 'required|string|exists:plants,culture',
+            'plant_id' => 'required|integer|exists:plants,id',
             'time_harvest' => 'required|string',
             'weight_harvest' => 'required|numeric',
         ]);

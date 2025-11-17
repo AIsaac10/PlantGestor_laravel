@@ -53,7 +53,7 @@
                 <tbody>
                     @foreach($harvests as $harvest)
                         <tr class="odd:bg-white even:bg-gray-100">
-                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->culture }}</td>
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->plant->culture }}</td>
                             <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->time_harvest }}</td>
                             <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->weight_harvest }}</td>
                             <td class="px-6 py-3 border-t border-gray-200 space-x-2">

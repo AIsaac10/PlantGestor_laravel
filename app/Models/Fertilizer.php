@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fertilizer extends Model
 {
-    protected $fillable = ['culture','fertilizer','time_fertilizer','weight_fertilizer'
-    ];
+    protected $fillable = ['plant_id','fertilizer','time_fertilizer','weight_fertilizer'];
+
+        public function plant()
+    {
+        return $this->belongsTo(Plant::class, 'plant_id', 'id');
+    }
 }
