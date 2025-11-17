@@ -15,20 +15,27 @@ class FertilizerController extends Controller
         return view("fertilizers.index", compact("fertilizers"));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        $plants = \App\Models\Plant::all();
+        return view('fertilizers.create', compact('plants'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'culture' => 'required|string|exists:plants,culture',
+            'time_fertilizer' => 'required|string',
+            'weight_fertilizer' => 'required|numeric',
+        ]);
+
+
+        Fertilizer::create($request->only(['culture','fertilizer','time_fertilizer','weight_fertilizer'
+]));
+
+        return redirect()->route('fertilizers.index')->with('success', 'Colheita cadastrada com sucesso!');
     }
 
     /**

@@ -49,6 +49,6 @@
             </button>
         </form>
     </div>
-    <a class="inline-block  hover:text-gray-500 text-bg-gray-800 text-sm px-3 py-1 rounded transition" href="{{ route('plants.index') }}">Retornar</a>
+    <a class="inline-block  hover:text-gray-500 text-bg-gray-800 text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.index') }}">Retornar</a>
 </body>
 </html>

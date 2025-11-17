@@ -16,7 +16,7 @@
 
     <div class="flex items-center">
         <div class="p-5 pr-95">
-            <a class=" inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-5 py-3 rounded transition" href="{{ route('plants.create') }}">Criar novo Cadastro</a>
+            <a class=" inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-5 py-3 rounded transition" href="{{ route('fertilizers.create') }}">Criar novo Cadastro</a>
         </div>
 
         @if (session('success'))
