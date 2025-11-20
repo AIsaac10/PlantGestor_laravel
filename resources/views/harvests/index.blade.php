@@ -45,8 +45,8 @@
                 <thead class="bg-green-600 text-white">
                     <tr>
                         <th class="px-6 py-3 text-left text-sm font-semibold">Colheita</th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold">Tempo</th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold">Peso</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold">Data da colheita</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold">Peso da colheita</th>
                         <th class="px-6 py-3 text-left text-sm font-semibold">Ações</th>
                     </tr>
                 </thead>
