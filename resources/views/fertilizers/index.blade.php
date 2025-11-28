@@ -7,11 +7,21 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-50">
-    <header class="bg-green-500 flex p-3">
-        <h1 class="text-2xl pr-6 text-white">PlantGestor</h1>
-        <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('plants.index') }}">Plantas</a>
-        <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('harvests.index') }}">Colheitas</a>
-        <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.index') }}">Fertilizantes</a>
+    <header class="bg-green-500 flex justify-between p-3 items-center">
+        <div class="flex items-center space-x-2">
+            <h1 class="text-2xl pr-6 text-white">PlantGestor</h1>
+
+            <a class="bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('plants.index') }}">Plantas</a>
+            <a class="bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('harvests.index') }}">Colheitas</a>
+            <a class="bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.index') }}">Fertilizantes</a>
+        </div>
+
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit" class="text-white bg-red-500 px-3 py-1 rounded hover:bg-red-600">
+                Logout
+            </button>
+        </form>
     </header>
 
     <div class="flex items-center">
