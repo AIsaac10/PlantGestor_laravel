@@ -50,40 +50,38 @@
 
 
 
-    <div class="overflow-x-auto flex items-center justify-center">
-        <table class="min-w-200 border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-            <thead class="bg-green-600 text-white">
-                <tr>
-                    <th class="px-6 py-3 text-left text-sm font-semibold">Nome da Cultura</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold">Nome do fertilizante</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold">Data de fertilização</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold">Quantidade de fertilizante</th> 
-                    <th class="px-6 py-3 text-left text-sm font-semibold">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($fertilizers as $fertilizer)
-                    <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->plant->culture }}</td>
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->fertilizer }}</td>
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->time_fertilizer_formatted }}</td>
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->weight_fertilizer }}</td>
+<div class="overflow-x-auto flex items-center justify-center">
+    <table class="w-[1200px] min-w-[1000px] max-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <thead class="bg-green-600 text-white">
+            <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Nome da Cultura</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Nome do fertilizante</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Data de fertilização</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Quantidade de fertilizante</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($fertilizers as $fertilizer)
+                <tr class="odd:bg-white even:bg-gray-100">
+                    <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->plant->culture }}</td>
+                    <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->fertilizer }}</td>
+                    <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->time_fertilizer_formatted }}</td>
+                    <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->weight_fertilizer }}</td>
+                    <td class="px-6 py-3 border-t border-gray-200 space-x-2">
+                        <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.edit', $fertilizer->id) }}">Editar</a> 
 
-                        <td class="px-6 py-3 border-t border-gray-200 space-x-2">
-                            <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.edit', $fertilizer->id) }}">Editar</a> 
-                            
-                            
-                            <form class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded cursor-pointer transition" action="{{ route('fertilizers.destroy', $fertilizer->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
-                                @csrf
-                                @method("DELETE")
-                                <input class="btnDelete" type="submit" value="Excluir">
-                            
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                        <form action="{{ route('fertilizers.destroy', $fertilizer->id) }}" method="POST" class="inline" onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
+                            @csrf
+                            @method("DELETE")
+                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded transition">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 </body>
 </html>

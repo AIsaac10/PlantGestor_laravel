@@ -52,11 +52,11 @@
 
 
     <div class="overflow-x-auto flex items-center justify-center">
-        <table class="min-w-200 border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <table class="w-[1200px] min-w-[1000px] max-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
             <thead class="bg-green-600 text-white">
                 <tr>
-                    <th class="px-6 py-3 text-left text-sm font-semibold">Nome da Cultura</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold">Ações</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold w-1/2">Nome da Cultura</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold w-1/2">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -66,13 +66,11 @@
 
                         <td class="px-6 py-3 border-t border-gray-200 space-x-2">
                             <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('plants.edit', $plant->id) }}">Editar</a> 
-                            
-                            
-                            <form class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded cursor-pointer transition" action="{{ route('plants.destroy', $plant->id) }}" method="POST" style="display:inline" onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
+
+                            <form class="inline-block" action="{{ route('plants.destroy', $plant->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
                                 @csrf
                                 @method("DELETE")
-                                <input class="btnDelete" type="submit" value="Excluir">
-                            
+                                <input class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded cursor-pointer transition" type="submit" value="Excluir">
                             </form>
                         </td>
                     </tr>
@@ -80,5 +78,6 @@
             </tbody>
         </table>
     </div>
+
 </body>
 </html>

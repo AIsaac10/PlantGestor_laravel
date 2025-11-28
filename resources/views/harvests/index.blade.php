@@ -49,45 +49,46 @@
     </div>
 
 
-        <div class="overflow-x-auto flex items-center justify-center">
-            <table class="min-w-200 border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-                <thead class="bg-green-600 text-white">
-                    <tr>
-                        <th class="px-6 py-3 text-left text-sm font-semibold">Colheita</th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold">Data da colheita</th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold">Peso da colheita</th>
-                        <th class="px-6 py-3 text-left text-sm font-semibold">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($harvests as $harvest)
-                        <tr class="odd:bg-white even:bg-gray-100">
-                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->plant->culture }}</td>
-                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->time_harvest_formatted }}</td>
-                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->weight_harvest}}</td>
-                            <td class="px-6 py-3 border-t border-gray-200 space-x-2">
-                                <a href="{{ route('harvests.edit', $harvest->id) }}" 
-                                   class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition">
-                                   Editar
-                                </a>
+<div class="overflow-x-auto flex items-center justify-center">
+    <table class="w-[1200px] min-w-[1000px] max-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <thead class="bg-green-600 text-white">
+            <tr>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/4">Colheita</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/4">Data da colheita</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/4">Peso da colheita</th>
+                <th class="px-6 py-3 text-left text-sm font-semibold w-1/4">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($harvests as $harvest)
+                <tr class="odd:bg-white even:bg-gray-100">
+                    <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->plant->culture }}</td>
+                    <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->time_harvest_formatted }}</td>
+                    <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->weight_harvest }}</td>
+                    <td class="px-6 py-3 border-t border-gray-200 space-x-2">
+                        <a href="{{ route('harvests.edit', $harvest->id) }}" 
+                           class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition">
+                           Editar
+                        </a>
 
-                                <form action="{{ route('harvests.destroy', $harvest->id) }}" 
-                                      method="POST" 
-                                      class="inline"
-                                      onsubmit="return confirm('Tem certeza que deseja excluir esta colheita?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" 
-                                            class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded transition">
-                                        Excluir
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
+                        <form action="{{ route('harvests.destroy', $harvest->id) }}" 
+                              method="POST" 
+                              class="inline"
+                              onsubmit="return confirm('Tem certeza que deseja excluir esta colheita?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" 
+                                    class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded transition">
+                                Excluir
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
     </main>
 </body>
 </html>
