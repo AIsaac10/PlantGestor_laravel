@@ -51,3 +51,12 @@
             <button type="submit"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
                 Envia
+            </button>
+
+        </form>
+    </div>
+
+            <a class="inline-block hover:text-gray-500 text-gray-800 text-sm px-3 py-1 rounded transition"
+                href="{{ route('harvests.index') }}">
+                Retornar
+            </a>
