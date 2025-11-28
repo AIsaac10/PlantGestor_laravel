@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StorePlantRequest extends FormRequest
 {
@@ -14,16 +15,23 @@ class StorePlantRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'culture' => 'required|string|unique:plants,culture|max:255',
+            'culture' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('plants')->where(fn($query) => $query->where('user_id', auth()->id())),
+            ],
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
-            'culture.required' => 'O nome da cultura é obrigatório.',
-            'culture.unique' => 'Essa planta já está cadastrada.',
-            'culture.string' => 'A cultura deve ser um texto válido.',
+            'culture.required' => 'O nome da planta é obrigatório.',
+            'culture.string' => 'A planta deve ser um texto válido.',
+            'culture.max' => 'A planta deve ter no máximo 255 caracteres.',
+            'culture.unique' => 'Você já cadastrou essa planta.',
         ];
     }
 }
+

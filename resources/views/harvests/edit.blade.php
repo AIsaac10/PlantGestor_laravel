@@ -32,13 +32,25 @@
 
             <label for="time_harvest" class="block text-gray-700 font-medium mb-1">Horário da Colheita:</label>
             <input type="text" name="time_harvest" id="time_harvest"
-                value="{{ $harvest->time_harvest }}" required
+                value="{{ old('time_harvest', $harvest->time_harvest ?? '') }}" 
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 
             <label for="weight_harvest" class="block text-gray-700 font-medium mb-1">Peso da Colheita:</label>
             <input type="number" step="0.01" name="weight_harvest" id="weight_harvest"
-                value="{{ $harvest->weight_harvest }}" required
+                value="{{ old('weight_harvest', $harvest->weight_harvest ?? '') }}" 
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
+            @error('plant_id')
+                <p class="text-red-500 mt-1">{{ $message }}</p>
+            @enderror
+
+            @error('time_harvest')
+                <p class="text-red-500 mt-1">{{ $message }}</p>
+            @enderror
+
+            @error('weight_harvest')
+                <p class="text-red-500 mt-1">{{ $message }}</p>
+            @enderror
 
             <button type="submit"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">

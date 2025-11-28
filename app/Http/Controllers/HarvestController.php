@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Plant;
 use App\Models\Harvest;
 use App\Http\Requests\StoreHarvestRequest;
+use App\Http\Requests\UpdateHarvestRequest;
 
 class HarvestController extends Controller
 {
@@ -26,12 +27,17 @@ public function create()
 
 
 
-    public function store(StoreHarvestRequest $request)
-    {
-        Harvest::create($request->validated());
+public function store(StoreHarvestRequest $request)
+{
+    Harvest::create([
+        'plant_id' => $request->plant_id,
+        'time_harvest' => $request->time_harvest,
+        'weight_harvest' => $request->weight_harvest,
+        'user_id' => auth()->id(),
+    ]);
 
-        return redirect()->route('harvests.index')->with('success', 'Colheita cadastrada com sucesso!');
-    }
+    return redirect()->route('harvests.index')->with('success', 'Colheita cadastrada com sucesso!');
+}
 
 
 
@@ -49,13 +55,11 @@ public function create()
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(UpdateHarvestRequest $request, Harvest $harvest)
     {
-        $harvest = Harvest::findOrFail($id);
+        $harvest->update($request->validated());
 
-        $harvest->update($request->all());
-
-        return redirect()->route("harvests.index")->with('success', 'Colheita alterada com sucesso!');
+        return redirect()->route('harvests.index')->with('success', 'Colheita atualizada com sucesso!');
     }
 
 
