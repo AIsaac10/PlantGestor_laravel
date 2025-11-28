@@ -11,32 +11,34 @@ class FertilizerController extends Controller
 
     public function index()
     {
-        $fertilizers = \App\Models\Fertilizer::with('plant')->get();
+        $fertilizers = Fertilizer::with('plant')->where('user_id', auth()->id())->get();
         return view("fertilizers.index", compact("fertilizers"));
     }
 
 
     public function create()
     {
-        $plants = \App\Models\Plant::all();
+        $plants = \App\Models\Plant::where('user_id', auth()->id())->get();
         return view('fertilizers.create', compact('plants'));
     }
 
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'plant_id' => 'required|integer|exists:plants,id',
+            'fertilizer' => 'required|string',
             'time_fertilizer' => 'required|date',
             'weight_fertilizer' => 'required|numeric',
         ]);
 
+        $validated['user_id'] = auth()->id();
 
-        Fertilizer::create($request->only(['plant_id','fertilizer','time_fertilizer','weight_fertilizer'
-]));
+        Fertilizer::create($validated);
 
-        return redirect()->route('fertilizers.index')->with('success', 'Colheita cadastrada com sucesso!');
+        return redirect()->route('fertilizers.index')->with('success', 'Fertilizante cadastrado com sucesso!');
     }
+
 
 
     public function show(string $id)

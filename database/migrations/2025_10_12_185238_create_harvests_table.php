@@ -15,6 +15,7 @@ return new class extends Migration
             $table->decimal('weight_harvest', 8, 2);
             $table->timestamps();
             $table->foreignId('plant_id')->constrained('plants')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 

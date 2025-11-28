@@ -11,31 +11,34 @@ class HarvestController extends Controller
 
     public function index()
     {
-        $harvests = \App\Models\Harvest::with('plant')->get();
+        $harvests = \App\Models\Harvest::with('plant')->where('user_id', auth()->id())->get();
         return view("harvests.index", compact("harvests"));
     }
 
 
-    public function create()
+public function create()
     {
-        $plants = \App\Models\Plant::all();
+        $plants = \App\Models\Plant::where('user_id', auth()->id())->get();
         return view('harvests.create', compact('plants'));
     }
 
 
+
     public function store(Request $request)
     {
-        $request->validate([
-            'plant_id' => 'required|integer|exists:plants,id',
-            'time_harvest' => 'required|date',
-            'weight_harvest' => 'required|numeric',
-        ]);
+    $validated = $request->validate([
+        'plant_id' => 'required|integer|exists:plants,id',
+        'time_harvest' => 'required|date',
+        'weight_harvest' => 'required|numeric',
+    ]);
 
+    $validated['user_id'] = auth()->id();
 
-        \App\Models\Harvest::create($request->all());
+    Harvest::create($validated);
 
-        return redirect()->route('harvests.index')->with('success', 'Colheita cadastrada com sucesso!');
+    return redirect()->route('harvests.index')->with('success', 'Colheita cadastrada com sucesso!');
     }
+
 
 
     public function show(string $id)

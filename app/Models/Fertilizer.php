@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Fertilizer extends Model
 {
-    protected $fillable = ['plant_id','fertilizer','time_fertilizer','weight_fertilizer',
+    protected $fillable = ['plant_id','fertilizer','time_fertilizer','weight_fertilizer','user_id',
     ];
 
     protected $casts = [

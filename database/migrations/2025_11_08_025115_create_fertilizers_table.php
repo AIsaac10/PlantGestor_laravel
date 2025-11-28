@@ -16,6 +16,7 @@ return new class extends Migration
             $table->decimal('weight_fertilizer');        
             $table->timestamps();
             $table->foreignId('plant_id')->constrained('plants')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 

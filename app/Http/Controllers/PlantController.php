@@ -10,7 +10,7 @@ class PlantController extends Controller
 
     public function index()
     {
-        $plants = Plant::all();
+        $plants = Plant::where('user_id', auth()->id())->get();
         return view("plants.index", compact("plants"));
     }
 
@@ -23,7 +23,13 @@ class PlantController extends Controller
 
     public function store(Request $request)
     {
-        Plant::create($request->all());
+            $validated = $request->validate([
+        'culture' => 'required|string'
+        ]);
+
+        $validated['user_id'] = auth()->id();
+
+        Plant::create($validated);
 
         return redirect()->route("plants.index")->with('success', 'Planta cadastrada com sucesso!');
     }

@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Harvest extends Model
 {
-    protected $fillable = ['plant_id', 'time_harvest', 'weight_harvest'];
+    protected $fillable = ['plant_id', 'time_harvest', 'weight_harvest', 'user_id'];
 
     protected $casts = [
         'time_harvest' => 'date',
