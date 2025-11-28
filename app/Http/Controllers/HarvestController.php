@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plant;
 use App\Models\Harvest;
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreHarvestRequest;
 
 class HarvestController extends Controller
 {
@@ -24,19 +24,13 @@ public function create()
 
 
 
-    public function store(Request $request)
+
+
+    public function store(StoreHarvestRequest $request)
     {
-    $validated = $request->validate([
-        'plant_id' => 'required|integer|exists:plants,id',
-        'time_harvest' => 'required|date',
-        'weight_harvest' => 'required|numeric',
-    ]);
+        Harvest::create($request->validated());
 
-    $validated['user_id'] = auth()->id();
-
-    Harvest::create($validated);
-
-    return redirect()->route('harvests.index')->with('success', 'Colheita cadastrada com sucesso!');
+        return redirect()->route('harvests.index')->with('success', 'Colheita cadastrada com sucesso!');
     }
 
 

@@ -17,7 +17,7 @@
             @csrf
 
             <label class="block text-gray-700 font-medium mb-1">Planta:</label>
-            <select name="plant_id" required
+            <select name="plant_id"
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
                 @foreach($plants as $plant)
                     <option value="{{ $plant->id }}">{{ $plant->culture }}</option>
@@ -25,12 +25,25 @@
             </select>
 
             <label class="block text-gray-700 font-medium mb-1">data da Colheita:</label>
-            <input type="date" name="time_harvest" required
+            <input type="date" name="time_harvest" value="{{ old('time_harvest') }}"
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 
             <label class="block text-gray-700 font-medium mb-1">Peso da Colhita:</label>
-            <input type="number" step="0.01" name="weight_harvest" required
+            <input type="number" step="0.01" name="weight_harvest" value="{{ old('weight_harvest') }}"
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
+            @error('plant_id')
+                <p class="text-red-500 mt-1">{{ $message }}</p>
+            @enderror
+
+            @error('time_harvest')
+                <p class="text-red-500 mt-1">{{ $message }}</p>
+            @enderror
+
+            @error('weight_harvest')
+                <p class="text-red-500 mt-1">{{ $message }}</p>
+            @enderror
+
 
             <button type="submit"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
