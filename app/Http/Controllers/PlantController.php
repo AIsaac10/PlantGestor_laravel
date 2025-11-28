@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StorePlantRequest;
+use App\Http\Requests\UpdatePlantRequest;
 use App\Models\Plant;
 
 class PlantController extends Controller
@@ -21,12 +22,9 @@ class PlantController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StorePlantRequest $request)
     {
-            $validated = $request->validate([
-        'culture' => 'required|string'
-        ]);
-
+        $validated = $request->validated();
         $validated['user_id'] = auth()->id();
 
         Plant::create($validated);
@@ -49,13 +47,11 @@ class PlantController extends Controller
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(UpdatePlantRequest $request, Plant $plant)
     {
-        $plant = Plant::findOrFail($id);
+        $plant->update($request->validated());
 
-        $plant->update($request->all());    
-        
-        return redirect()->route("plants.index")->with('success', 'Planta alterada com sucesso!');        
+        return redirect()->route('plants.index')->with('success', 'Planta atualizada com sucesso!');
     }
 
 

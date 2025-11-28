@@ -21,9 +21,13 @@
                 <label for="culture" class="block text-gray-700 font-medium mb-1">
                     Nome da Cultura:
                 </label>
-                <input type="text" id="culture" name="culture" value="{{ $plant->culture }}" required
+                <input type="text" id="culture" name="culture" value="{{ old('culture', $plant->culture) }}"
                     class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
             </div>
+
+           @error('culture')
+                <p class="text-red-500 mt-1">{{ $message }}</p>
+            @enderror
 
             <button type="submit"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
