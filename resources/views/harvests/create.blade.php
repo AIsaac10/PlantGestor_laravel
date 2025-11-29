@@ -24,21 +24,21 @@
                 @endforeach
             </select>
 
-            <label class="block text-gray-700 font-medium mb-1">data da Colheita:</label>
-            <input type="date" name="time_harvest" value="{{ old('time_harvest') }}"
-                class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
-
-            <label class="block text-gray-700 font-medium mb-1">Peso da Colhita:</label>
-            <input type="number" step="0.01" name="weight_harvest" value="{{ old('weight_harvest') }}"
-                class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
-
             @error('plant_id')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
 
+            <label class="block text-gray-700 font-medium mb-1">data da Colheita:</label>
+            <input type="date" name="time_harvest" value="{{ old('time_harvest') }}"
+                class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
             @error('time_harvest')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
+
+            <label class="block text-gray-700 font-medium mb-1">Peso da Colhita:</label>
+            <input type="number" step="0.01" name="weight_harvest" value="{{ old('weight_harvest') }}"
+                class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 
             @error('weight_harvest')
                 <p class="text-red-500 mt-1">{{ $message }}</p>
