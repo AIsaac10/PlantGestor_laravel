@@ -61,7 +61,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($harvests as $harvest)
+            @forelse($harvests as $harvest)
                 <tr class="odd:bg-white even:bg-gray-100">
                     <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->plant->culture }}</td>
                     <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $harvest->time_harvest_formatted }}</td>
@@ -85,11 +85,17 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+                @empty
+                    <tr>
+                        <td colspan="999" class="px-6 py-4 border-t border-gray-200 text-gray-700">
+                            Nenhum registro encontrado.
+                        </td>
+                    </tr>
+                @endforelse
         </tbody>
     </table>
 </div>
 
     </main>
 </body>
-</html>
+</html> 

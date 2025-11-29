@@ -62,22 +62,41 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($plants as $plant)
+                @forelse($plants as $plant)
                     <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $plant->culture }}</td>
+                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">
+                            {{ $plant->culture }}
+                        </td>
 
                         <td class="px-6 py-3 border-t border-gray-200 space-x-2">
-                            <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('plants.edit', $plant->id) }}">Editar</a> 
+                            <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition"
+                            href="{{ route('plants.edit', $plant->id) }}">
+                                Editar
+                            </a>
 
-                            <form class="inline-block" action="{{ route('plants.destroy', $plant->id) }}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
+                            <form class="inline-block"
+                                action="{{ route('plants.destroy', $plant->id) }}"
+                                method="POST"
+                                onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
                                 @csrf
                                 @method("DELETE")
-                                <input class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded cursor-pointer transition" type="submit" value="Excluir">
+                                <input class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded cursor-pointer transition"
+                                    type="submit"
+                                    value="Excluir">
                             </form>
                         </td>
                     </tr>
-                @endforeach
+
+                @empty
+                    <tr>
+                        <td class="px-6 py-4 border-t border-gray-200 text-gray-700"
+                            colspan="2">
+                            Nenhum registro encontrado.
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
+
         </table>
     </div>
 

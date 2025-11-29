@@ -63,7 +63,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach($fertilizers as $fertilizer)
+            @forelse($fertilizers as $fertilizer)
                 <tr class="odd:bg-white even:bg-gray-100">
                     <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->plant->culture }}</td>
                     <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $fertilizer->fertilizer }}</td>
@@ -79,9 +79,16 @@
                         </form>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td class="px-6 py-4 border-t border-gray-200 text-gray-700" colspan="5">
+                        Nenhum registro encontrado.
+                    </td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
+
 </div>
 
 </body>
