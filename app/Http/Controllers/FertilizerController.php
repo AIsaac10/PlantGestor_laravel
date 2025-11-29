@@ -35,12 +35,6 @@ class FertilizerController extends Controller
     }
 
 
-    public function show(string $id)
-    {
-        
-    }
-
-
     public function edit(string $id)
     {
         $fertilizer = Fertilizer::where('id', $id)->where('user_id', auth()->id())->firstOrFail();

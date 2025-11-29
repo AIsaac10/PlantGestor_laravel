@@ -40,13 +40,6 @@ public function store(StoreHarvestRequest $request)
 }
 
 
-
-    public function show(string $id)
-    {
-
-    }
-
-
 public function edit(string $id)
 {
     $harvest = Harvest::findOrFail($id);
