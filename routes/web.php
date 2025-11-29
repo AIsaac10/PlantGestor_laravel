@@ -6,6 +6,7 @@ use App\Http\Controllers\PlantController;
 use App\Http\Controllers\HarvestController;
 use App\Http\Controllers\FertilizerController;
 use App\Http\Controllers\ProfitController;
+use App\Http\Controllers\CostController;
 
 // Redireciona a raiz para o login
 Route::get('/', function () {
@@ -52,6 +53,16 @@ Route::middleware('auth')->group(function () {
     Route::get("/profits/{profit}/edit", [ProfitController::class, "edit"])->name("profits.edit");
     Route::put("/profits/{profit}", [ProfitController::class, "update"])->name("profits.update");
     Route::delete("/profits/{profit}", [ProfitController::class, "destroy"])->name("profits.destroy");
+
+    // COSTS
+    Route::get("/costs", [CostController::class, "index"])->name("costs.index");
+    Route::get("/costs/create", [CostController::class, "create"])->name("costs.create");
+    Route::post("/costs", [CostController::class, "store"])->name("costs.store");
+    Route::get("/costs/{cost}", [CostController::class, "show"])->name("costs.show");
+    Route::get("/costs/{cost}/edit", [CostController::class, "edit"])->name("costs.edit");
+    Route::put("/costs/{cost}", [CostController::class, "update"])->name("costs.update");
+    Route::delete("/costs/{cost}", [CostController::class, "destroy"])->name("costs.destroy");
+
 
     // Perfil
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
