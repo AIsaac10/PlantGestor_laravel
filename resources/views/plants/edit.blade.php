@@ -31,7 +31,7 @@
 
             <button type="submit"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
-                Enviar
+                Atualizar
             </button>
         </form>
     </div>
