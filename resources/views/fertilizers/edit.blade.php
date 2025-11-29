@@ -16,7 +16,7 @@
             @method("put")
 
             <label class="block text-gray-700 font-medium mb-1" for="culture">Planta:</label>
-            <select name="plant_id" id="plant_id" required>
+            <select name="plant_id" id="plant_id">
                 @foreach($plants as $plant)
                     <option value="{{ $plant->id }}" 
                         {{ $fertilizers->plant_id == $plant->id ? 'selected' : '' }}>
@@ -25,24 +25,36 @@
                 @endforeach
             </select>
 
+                @error('plant_id')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
 
             <label class="block text-gray-700 font-medium mb-1" for="fertilizer">Fertilizante:</label>
             <input type="text" name="fertilizer" id="fertilizer"
                 value="{{ $fertilizers->fertilizer }}"
-                required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
+                @error('fertilizer')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
                 
             <label class="block text-gray-700 font-medium mb-1" for="time_fertilizer">Data da Fertilização:</label>
             <input type="text" step="0.01" name="time_fertilizer" id="time_fertilizer"
                 value="{{ $fertilizers->time_fertilizer }}"
-                required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
+                @error('time_fertilizer')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
 
             <label class="block text-gray-700 font-medium mb-1" for="weight_fertilizer">Peso do Fertilizante:</label>
             <input type="number" step="0.01" name="weight_fertilizer" id="weight_fertilizer"
                 value="{{ $fertilizers->weight_fertilizer }}"
-                required
                 class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
+                @error('weight_fertilizer')
+                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
 
             <input type="submit" value="Salvar Alterações"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">

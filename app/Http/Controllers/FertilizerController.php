@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdateFertilizerRequest;
+use App\Http\Requests\StoreFertilizerRequest;
 use App\Models\Fertilizer;
 use App\Models\Plant;
 
@@ -23,22 +24,15 @@ class FertilizerController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(StoreFertilizerRequest $request)
     {
-        $validated = $request->validate([
-            'plant_id' => 'required|integer|exists:plants,id',
-            'fertilizer' => 'required|string',
-            'time_fertilizer' => 'required|date',
-            'weight_fertilizer' => 'required|numeric',
-        ]);
-
+        $validated = $request->validated();
         $validated['user_id'] = auth()->id();
 
         Fertilizer::create($validated);
 
         return redirect()->route('fertilizers.index')->with('success', 'Fertilizante cadastrado com sucesso!');
     }
-
 
 
     public function show(string $id)
@@ -55,13 +49,13 @@ class FertilizerController extends Controller
     }
 
 
-    public function update(Request $request, string $id)
+    public function update(UpdateFertilizerRequest $request, string $id)
     {
         $fertilizer = Fertilizer::findOrFail($id);
 
-        $fertilizer->update($request->all());
+        $fertilizer->update($request->validated());
 
-        return redirect()->route("fertilizers.index")->with('success', 'Colheita alterada com sucesso!');
+        return redirect()->route("fertilizers.index")->with('success', 'Fertilizante atualizado com sucesso!');
     }
 
 
