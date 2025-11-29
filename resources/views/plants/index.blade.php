@@ -15,6 +15,7 @@
             <a class="bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('harvests.index') }}">Colheitas</a>
             <a class="bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('fertilizers.index') }}">Fertilizantes</a>
             <a class="bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('profits.index') }}">Lucros</a>
+            <a class="bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" href="{{ route('costs.index') }}">Custos</a>
 
         </div>
 
