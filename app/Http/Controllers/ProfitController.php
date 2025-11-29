@@ -12,8 +12,12 @@ class ProfitController extends Controller
     public function index()
     {
         $profits = Profit::where('user_id', auth()->id())->get();
-        return view('profits.index', compact('profits'));
+
+        $totalLucro = $profits->sum('quantity_profit');
+
+        return view('profits.index', compact('profits', 'totalLucro'));
     }
+
 
 
     public function create()

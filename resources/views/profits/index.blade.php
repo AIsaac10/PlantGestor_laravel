@@ -50,42 +50,60 @@
         @endif
     </div>
 
-    <div class="overflow-x-auto flex items-center justify-center">
-        <table class="w-[1200px] min-w-[1000px] max-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
-            <thead class="bg-green-600 text-white">
-                <tr>
-                    <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Descrição do lucro</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Valor do lucro</th>
-                    <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Ações</th>
-                </tr>
-            </thead>
+    <div class="overflow-x-auto flex items-center justify-center py-6">
 
-            <tbody>
-                @foreach($profits as $profit)
-                    <tr class="odd:bg-white even:bg-gray-100">
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $profit->description_profit }}</td>
-                        <td class="px-6 py-3 border-t border-gray-200 text-gray-700">R$ {{ number_format($profit->quantity_profit, 2, ',', '.') }}</td>
+        <div class="w-[1200px]">
 
-                        <td class="px-6 py-3 border-t border-gray-200 space-x-2">
-                            <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" 
-                               href="{{ route('profits.edit', $profit->id) }}">
-                               Editar
-                            </a>
 
-                            <form action="{{ route('profits.destroy', $profit->id) }}" method="POST" class="inline" 
-                                  onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
-                                @csrf
-                                @method("DELETE")
-                                <button type="submit" 
-                                        class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded transition">
-                                    Excluir
-                                </button>
-                            </form>
-                        </td>
+            <div class="flex justify-end w-[1200px] mb-4">
+                <div class="bg-green-600 text-white px-5 py-3 rounded-lg shadow text-lg font-semibold">
+                    Total: R$ {{ number_format($totalLucro, 2, ',', '.') }}
+                </div>
+            </div>
+
+
+            <table class="w-[1200px] min-w-[1000px] max-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+                <thead class="bg-green-600 text-white">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Descrição do lucro</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Valor do lucro</th>
+                        <th class="px-6 py-3 text-left text-sm font-semibold w-1/5">Ações</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                    @forelse($profits as $profit)
+                        <tr class="odd:bg-white even:bg-gray-100">
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">{{ $profit->description_profit }}</td>
+                            <td class="px-6 py-3 border-t border-gray-200 text-gray-700">R$ {{ number_format($profit->quantity_profit, 2, ',', '.') }}</td>
+
+                            <td class="px-6 py-3 border-t border-gray-200 space-x-2">
+                                <a class="inline-block bg-gray-800 hover:bg-gray-900 text-white text-sm px-3 py-1 rounded transition" 
+                                   href="{{ route('profits.edit', $profit->id) }}">
+                                   Editar
+                                </a>
+
+                                <form action="{{ route('profits.destroy', $profit->id) }}" method="POST" class="inline" 
+                                      onsubmit="return confirm('Tem certeza que deseja excluir este registro?')">
+                                    @csrf
+                                    @method("DELETE")
+                                    <button type="submit" 
+                                            class="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded transition">
+                                        Excluir
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td class="px-6 py-4 border-t border-gray-200 text-gray-700" colspan="3">Nenhum registro encontrado.</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
+
+        </div>
+
     </div>
 
 </body>
