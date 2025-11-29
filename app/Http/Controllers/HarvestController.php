@@ -47,12 +47,15 @@ public function store(StoreHarvestRequest $request)
     }
 
 
-    public function edit(string $id)
-    {
-        $harvest = Harvest::findOrFail($id);
-        $plants = Plant::all();
-        return view("harvests.edit", compact("harvest"),  compact('plants'));
-    }
+public function edit(string $id)
+{
+    $harvest = Harvest::findOrFail($id);
+
+    $plants = Plant::where('user_id', auth()->id())->get();
+
+    return view("harvests.edit", compact("harvest", "plants"));
+}
+
 
 
     public function update(UpdateHarvestRequest $request, Harvest $harvest)

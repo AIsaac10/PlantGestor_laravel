@@ -43,10 +43,13 @@ class FertilizerController extends Controller
 
     public function edit(string $id)
     {
-        $fertilizers = Fertilizer::findOrFail($id);
-        $plants = Plant::all();
-        return view("fertilizers.edit", compact("fertilizers"),  compact('plants'));
+        $fertilizer = Fertilizer::where('id', $id)->where('user_id', auth()->id())->firstOrFail();
+
+        $plants = Plant::where('user_id', auth()->id())->get();
+
+        return view("fertilizers.edit", compact('fertilizer', 'plants'));
     }
+
 
 
     public function update(UpdateFertilizerRequest $request, string $id)
