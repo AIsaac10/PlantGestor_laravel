@@ -13,52 +13,59 @@
             Editar Colheita
         </h1>
 
-<form class="space-y-4" action="{{ route('harvests.update', $harvest->id) }}" method="POST">
-    @csrf
-    @method("PUT")
+        <form class="space-y-4" action="{{ route('harvests.update', $harvest->id) }}" method="POST">
+            @csrf
+            @method("PUT")
 
-    {{-- CAMPO PLANTA --}}
-    <label for="plant_id" class="block text-gray-700 font-medium mb-1">Planta:</label>
+            {{-- CAMPO PLANTA --}}
+            <div>
+                <label for="plant_id" class="block text-gray-700 font-medium mb-1">Planta:</label>
+                <select name="plant_id" id="plant_id" required
+                    class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+                    @foreach($plants as $plant)
+                        <option value="{{ $plant->id }}" 
+                            {{ old('plant_id', $harvest->plant_id) == $plant->id ? 'selected' : '' }}>
+                            {{ $plant->culture }}
+                        </option>
+                    @endforeach
+                </select>
+                @error('plant_id')
+                    <p class="text-red-500 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
 
-    <select name="plant_id" id="plant_id" required
-        class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+            {{-- CAMPO HORÁRIO --}}
+            <div>
+                <label for="time_harvest" class="block text-gray-700 font-medium mb-1">Horário da Colheita:</label>
+                <input type="date" name="time_harvest" id="time_harvest"
+                    value="{{ old('time_harvest', $harvest->time_harvest->format('Y-m-d')) }}"
+                    class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
 
-        @foreach($plants as $plant)
-            <option value="{{ $plant->id }}" 
-                {{ old('plant_id', $harvest->plant_id) == $plant->id ? 'selected' : '' }}>
-                {{ $plant->culture }}
-            </option>
-        @endforeach
+                @error('time_harvest')
+                    <p class="text-red-500 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
 
-    </select>
+            {{-- CAMPO PESO --}}
+            <div>
+                <label for="weight_harvest" class="block text-gray-700 font-medium mb-1">Peso da Colheita:</label>
+                <input type="number" step="0.01" name="weight_harvest" id="weight_harvest"
+                    value="{{ old('weight_harvest', $harvest->weight_harvest) }}"
+                    class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+                @error('weight_harvest')
+                    <p class="text-red-500 mt-1">{{ $message }}</p>
+                @enderror
+            </div>
 
-    @error('plant_id')
-        <p class="text-red-500 mt-1">{{ $message }}</p>
-    @enderror
+            <button type="submit"
+                class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
+                Atualizar
+            </button>
 
-
-    {{-- CAMPO HORÁRIO --}}
-    <label for="time_harvest" class="block text-gray-700 font-medium mb-1">Horário da Colheita:</label>
-
-    <input type="text" name="time_harvest" id="time_harvest"
-        value="{{ old('time_harvest', $harvest->time_harvest) }}"
-        class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
-
-    @error('time_harvest')
-        <p class="text-red-500 mt-1">{{ $message }}</p>
-    @enderror
-
-
-    {{-- CAMPO PESO --}}
-    <label for="weight_harvest" class="block text-gray-700 font-medium mb-1">Peso da Colheita:</label>
-
-    <input type="number" step="0.01" name="weight_harvest" id="weight_harvest"
-        value="{{ old('weight_harvest', $harvest->weight_harvest) }}"
-        class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 foc
-
+        </form>
     </div>
 
-    <a class="inline-block hover:text-gray-500 text-gray-800 text-sm px-3 py-1 rounded transition"
+    <a class="inline-block hover:text-gray-500 text-gray-800 text-sm px-3 py-1 rounded transition mt-3"
        href="{{ route('harvests.index') }}">
        Retornar
     </a>

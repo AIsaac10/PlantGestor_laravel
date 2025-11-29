@@ -40,9 +40,10 @@
 
     <!-- Data -->
     <label class="block text-gray-700 font-medium mb-1" for="time_fertilizer">Data da Fertilização:</label>
-    <input type="date" name="time_fertilizer" id="time_fertilizer"
-        value="{{ old('time_fertilizer', $fertilizer->time_fertilizer) }}"
-        class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+<input type="date" name="time_fertilizer" id="time_fertilizer"
+    value="{{ old('time_fertilizer', $fertilizer->time_fertilizer->format('Y-m-d')) }}"
+    class="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-green-500 text-gray-800">
+
     @error('time_fertilizer')
         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
     @enderror
@@ -56,8 +57,10 @@
         <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
     @enderror
 
-    <input type="submit" value="Salvar Alterações"
+    <button type="submit"
         class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
+        Atualizar
+    </button>
 </form>
 
     </div>
