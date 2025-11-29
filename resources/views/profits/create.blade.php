@@ -16,7 +16,6 @@
         <form action="{{ route('profits.store') }}" method="POST" class="space-y-4">
             @csrf
 
-            <!-- Descrição -->
             <div>
                 <label for="description_profit" class="block text-gray-700 font-medium mb-1">
                     Descrição do Lucro:
@@ -32,7 +31,6 @@
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
 
-            <!-- Quantidade -->
             <div>
                 <label for="quantity_profit" class="block text-gray-700 font-medium mb-1">
                     Quantidade do Lucro (R$):
@@ -48,7 +46,6 @@
                 <p class="text-red-500 mt-1">{{ $message }}</p>
             @enderror
 
-            <!-- Botão -->
             <button type="submit"
                 class="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-2 rounded-md transition">
                 Enviar
