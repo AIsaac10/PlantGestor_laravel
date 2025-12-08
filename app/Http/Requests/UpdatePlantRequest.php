@@ -16,7 +16,7 @@ class UpdatePlantRequest extends FormRequest
         $plantId = $this->route('plant')->id;
 
         return [
-            'culture' => 'required|string|max:255|unique:plants,culture,' . $plantId,
+            'culture' => 'required|string|max:255|unique:plants,culture,' . $plantId . ',id,user_id,' . auth()->id(),
             'description' => 'nullable|string|max:500',
         ];
     }
