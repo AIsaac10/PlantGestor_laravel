@@ -10,6 +10,10 @@ use App\Http\Controllers\CostController;
 
 // Redireciona a raiz para o login
 Route::get('/', function () {
+    if (auth()->check()) {
+        return redirect()->route("plants.index");
+    }
+
     return redirect()->route('login');
 });
 
@@ -70,5 +74,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Breeze
 require __DIR__.'/auth.php';
